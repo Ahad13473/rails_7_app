@@ -1,0 +1,21 @@
+= form_with(model: [@personal_data, @employment], local: true, id: "employment-form") do |form|
+  - if @employment.errors.any?
+    #error_explanation
+      h2= "#{pluralize(@employment.errors.count, "error")} prohibited this employment from being saved:"
+      ul
+        - @employment.errors.full_messages.each do |message|
+          li= message
+
+  .form-group
+    = form.label :employer
+    = form.text_field :employer, class: "form-control"
+
+  .form-group
+    = form.label :date_started
+    = form.date_field :date_started, class: "form-control"
+
+  .form-group
+    = form.label :date_ended
+    = form.date_field :date_ended, class: "form-control"
+
+  = form.submit class: "btn btn-primary", disabled: true

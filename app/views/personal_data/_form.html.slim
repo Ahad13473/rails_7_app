@@ -1,0 +1,21 @@
+= turbo_frame_tag 'personal_data_form' do
+= form_with url: personal_data_path, method: :post, data: { controller: 'personal-data-form' } do |f|
+= f.label :first_name, 'First Name*'
+= f.text_field :first_name, required: true, maxlength: 25, data: { target: 'personal-data-form.field', error: 'Please enter a valid first name.' }
+
+= f.label :last_name, 'Last Name*'
+= f.text_field :last_name, required: true, maxlength: 50, data: { target: 'personal-data-form.field', error: 'Please enter a valid last name.' }
+
+= f.label :nickname, 'Nickname'
+= f.text_field :nickname
+
+= f.label :email_address, 'Email Address*'
+= f.email_field :email_address, required: true, data: { controller: 'email-validation', target: 'personal-data-form.field', error: 'Please enter a valid email address.' }
+
+= f.label :phone_number, 'Phone Number*'
+= f.text_field :phone_number, required: true, data: { controller: 'phone-number-format', target: 'personal-data-form.field', error: 'Please enter a valid phone number in the format XXX-XXX-XXXX.' }
+
+= f.submit 'Save', disabled: true, data: { target: 'personal-data-form.save' }
+= button_tag 'Cancel', type: 'button', data: { action: 'turbo.closeModal' }
+
+= javascript_pack_tag 'personal_data_form'

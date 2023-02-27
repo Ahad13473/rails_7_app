@@ -1,0 +1,13 @@
+div
+  button#personal-data-btn.btn.btn-primary.m-2 Personal Data
+  button#employment-btn.btn.btn-primary.m-2 Employment
+
+div#personal-data-modal.modal.fade.tabindex="-1" role="dialog" aria-labelledby="personal-data-modal-label" aria-hidden="true"
+div.modal-dialog
+  div.modal-content
+    div.modal-header
+      h5#personal-data-modal-label.modal-title Personal Data
+      button.close data-dismiss="modal" aria-label="Close"
+        span aria-hidden="true" &times;
+    div.modal-body
+      = render partial: 'personal_data/form', locals: { personal_datum: PersonalDatum.new }
